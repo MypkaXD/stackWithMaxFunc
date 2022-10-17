@@ -64,7 +64,7 @@ public:
 	}
 
 
-	//void print() {
+	//void print() { // how can i do this?
 	//	StackWithMax<int> temp = *this;
 	//	for (int count = 0; count < temp.size(); count++) {
 	//		std::cout << temp.top() << "\t";
@@ -72,7 +72,7 @@ public:
 	//	}
 	//}
 
-	//friend std::ostream& operator<<(std::ostream& out, StackWithMax<int>& other)
+	//friend std::ostream& operator<<(std::ostream& out, StackWithMax<int>& other) // how can i do this?
 	//{
 	//	StackWithMax<int> temp = other;
 	//	for (int count = 0; count < temp.size(); count++) {
