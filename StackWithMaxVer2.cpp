@@ -7,7 +7,7 @@ class StackWithMax {
 public:
 
 	StackWithMax() {}
-	StackWithMax(const std::stack <T> &other) {
+	StackWithMax(const std::stack <T>& other) {
 		steck = other;
 		steck_max = other.steck_max;
 	}
@@ -42,7 +42,7 @@ public:
 			steck_max.push(value);
 			steck.push(value);
 		}
-		else if(steck.size() > 0 || steck_max.top() > value)
+		else if (steck.size() > 0 || steck_max.top() >= value)
 			steck.push(value);
 	}
 
@@ -64,23 +64,23 @@ public:
 	}
 
 
-	//void print() { // how can i do this?
-	//	StackWithMax<int> temp = *this;
-	//	for (int count = 0; count < temp.size(); count++) {
-	//		std::cout << temp.top() << "\t";
-	//		temp.pop();
-	//	}
-	//}
+	void print() { // how can i do this?
+		StackWithMax<int> temp = *this;
+		for (int count = 0; count < temp.size(); count++) {
+			std::cout << temp.steck.top() << "\t";
+			temp.pop();
+		}
+	}
 
-	//friend std::ostream& operator<<(std::ostream& out, StackWithMax<int>& other) // how can i do this?
-	//{
-	//	StackWithMax<int> temp = other;
-	//	for (int count = 0; count < temp.size(); count++) {
-	//		out << temp.top() << "\t";
-	//		temp.pop();
-	//	}
-	//	return out;
-	//}
+	friend std::ostream& operator<<(std::ostream& out, StackWithMax<int>& other) // how can i do this?
+	{
+		StackWithMax<int> temp = other;
+		for (int count = 0; count < temp.size(); count++) {
+			out << temp.steck.top() << "\t";
+			temp.pop();
+		}
+		return out;
+	}
 };
 
 
@@ -88,22 +88,24 @@ public:
 int main() {
 	StackWithMax<int> steck1;
 	StackWithMax<int> steck2;
-	
+
 	for (int count = 0; count < 100; count++) {
 		steck1.push(count);
 	}
-	
+
 	steck1.push(123);
 	std::cout << "MAX elem of steck1 is " << steck1.maxelem() << std::endl;
-	steck1.pop();
+	steck1.push(123);
+	std::cout << steck1 << std::endl;
 	std::cout << "MAX elem of steck1 is " << steck1.maxelem() << std::endl;
 	//st.print();
-	steck1.pop();
-
+	steck1.push(123);
+	std::cout << "MAX elem of steck1 is " << steck1.maxelem() << std::endl;
+	std::cout << steck1 << std::endl;
 
 	steck2 = steck1;
 	steck1.pop();
-
+	std::cout << steck2;
 	std::cout << "MAX elem of steck2 is " << steck2.maxelem() << std::endl;
 	return 0;
 }
